@@ -1,0 +1,94 @@
+---
+import { SITE_CONFIG } from '../data/site-config';
+import { NAVIGATION_LINKS } from '../data/navigation';
+---
+
+<header class="sticky top-0 z-50 bg-white backdrop-blur-md border-b border-dark/5 shadow">
+	<div class="container flex items-center justify-between h-20">
+		<a href="/" class="text-xl font-bold text-dark tracking-tighter">
+			{SITE_CONFIG.siteName.toUpperCase()}
+		</a>
+
+		<nav class="hidden md:flex items-center gap-8">
+			{
+				NAVIGATION_LINKS.map(link => (
+					<a
+						href={link.href}
+						class="text-sm font-medium text-dark/70 hover:text-primary transition-colors cursor-pointer">
+						{link.name}
+					</a>
+				))
+			}
+			<a href={`tel:${SITE_CONFIG.contact.phone}`} class="btn-primary py-2 px-5 text-sm">
+				Appeler
+			</a>
+		</nav>
+
+		<button
+			id="menu-toggle"
+			class="md:hidden p-2 text-dark transition-transform duration-300 active:scale-90 cursor-pointer"
+			aria-label="Menu">
+			<svg
+				id="menu-icon"
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="currentColor"
+				class="w-7 h-7 transition-transform duration-300">
+				<path
+					id="path1"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+			</svg>
+		</button>
+	</div>
+
+	<div
+		id="mobile-menu"
+		class="invisible opacity-0 -translate-y-2.5 pointer-events-none md:hidden absolute top-20 left-0 w-full bg-white border-b border-dark/5 px-4 py-8 space-y-4 transition-all duration-300 ease-in-out shadow-xl">
+		{
+			NAVIGATION_LINKS.map(link => (
+				<a
+					href={link.href}
+					class="block text-lg font-medium text-dark/80 hover:text-primary transition-colors">
+					{link.name}
+				</a>
+			))
+		}
+		<a href={`tel:${SITE_CONFIG.contact.phone}`} class="btn-primary w-full">Appeler maintenant</a>
+	</div>
+</header>
+
+<script>
+	const btn = document.getElementById('menu-toggle');
+	const menu = document.getElementById('mobile-menu');
+	const icon = document.getElementById('menu-icon');
+
+	btn?.addEventListener('click', () => {
+		const isHidden = menu?.classList.contains('invisible');
+
+		if (isHidden) {
+			// OUVERTURE
+			menu?.classList.remove('invisible', 'opacity-0', '-translate-y-2.5', 'pointer-events-none');
+			menu?.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+			icon?.classList.add('rotate-90');
+		} else {
+			// FERMETURE
+			menu?.classList.add('invisible', 'opacity-0', '-translate-y-2.5', 'pointer-events-none');
+			menu?.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+			icon?.classList.remove('rotate-90');
+		}
+	});
+
+	// ermer le menu si on clique sur un lien (important pour les ancres #)
+	const mobileLinks = menu?.querySelectorAll('a');
+	mobileLinks?.forEach(link => {
+		link.addEventListener('click', () => {
+			menu?.classList.add('invisible', 'opacity-0', '-translate-y-2.5', 'pointer-events-none');
+			menu?.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+			icon?.classList.remove('rotate-90');
+		});
+	});
+</script>

@@ -1,0 +1,30 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-primary: #2563eb;
+  --color-dark: #0f172a;
+  --color-light: #f8fafc;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  --container-center: true;
+  --container-padding: 1rem;
+}
+
+@layer components {
+  .btn-primary {
+    @apply flex items-center justify-center px-6 py-3 rounded-md font-semibold transition-all active:scale-95 text-center bg-primary text-white shadow-sm hover:bg-primary/90;
+  }
+}
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    @apply text-dark font-bold tracking-tight;
+  }
+
+  .container {
+    @apply mx-auto px-4;
+  }
+}

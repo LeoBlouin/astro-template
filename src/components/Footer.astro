@@ -1,0 +1,79 @@
+---
+import { SITE_CONFIG } from '../data/site-config';
+import { NAVIGATION_LINKS } from '../data/navigation';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-dark text-light py-12 mt-auto">
+	<div class="container mx-auto px-4">
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+			<div>
+				<h3 class="text-white text-xl mb-4">{SITE_CONFIG.siteName}</h3>
+				<p class="text-sm leading-relaxed opacity-70">
+					{SITE_CONFIG.description}
+				</p>
+			</div>
+
+			<div>
+				<h3 class="text-white text-xl mb-4">Contact</h3>
+				<ul class="space-y-3 text-sm opacity-70">
+					<li>
+						<a
+							href={`tel:${SITE_CONFIG.contact.phone}`}
+							class="hover:text-primary transition-colors">
+							📞 {SITE_CONFIG.contact.phone}
+						</a>
+					</li>
+					<li>
+						<a
+							href={`mailto:${SITE_CONFIG.contact.email}`}
+							class="hover:text-primary transition-colors">
+							✉️ {SITE_CONFIG.contact.email}
+						</a>
+					</li>
+					<li>
+						<address class="not-italic">
+							📍 {SITE_CONFIG.contact.address}
+						</address>
+					</li>
+				</ul>
+			</div>
+
+			<div>
+				<h3 class="text-white text-xl mb-4">Navigation</h3>
+				<ul class="space-y-2 text-sm opacity-70">
+					{
+						NAVIGATION_LINKS.map(link => (
+							<li>
+								<a href={link.href} class="hover:text-primary transition-colors">
+									{link.name}
+								</a>
+							</li>
+						))
+					}
+					<li>
+						<a
+							href={SITE_CONFIG.contact.googleMapsLink}
+							target="_blank"
+							class="hover:text-primary transition-colors">
+							Nous trouver
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div
+			class="border-t border-white/10 mt-10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-50">
+			<p>
+				© {currentYear}
+				{SITE_CONFIG.siteName}. Tous droits réservés.
+			</p>
+			<div class="flex gap-6">
+				<a href="/mentions-legales" class="hover:text-white">Mentions Légales</a>
+				<p>Développé par {SITE_CONFIG.author}</p>
+			</div>
+		</div>
+	</div>
+</footer>
