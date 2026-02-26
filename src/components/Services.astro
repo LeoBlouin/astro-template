@@ -1,0 +1,40 @@
+---
+import { SERVICES } from '../data/services';
+import { Icon } from 'astro-icon/components';
+---
+
+<section id="services" class="py-24 bg-white">
+  <div class="container">
+    
+    <div class="max-w-2xl mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">
+        Nos expertises au service de votre habitat
+      </h2>
+      <p class="text-lg text-dark/60">
+        Des solutions durables et une main-d'œuvre qualifiée pour tous vos travaux de plomberie et chauffage.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {SERVICES.map((service) => (
+        <div class="group p-8 rounded-3xl border border-dark/5 bg-light/30 hover:bg-white hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 border-b-4 hover:border-b-primary">
+          <div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary transition-all duration-500">
+            <Icon 
+              name={service.icon} 
+              class="w-7 h-7 text-primary group-hover:text-white transition-colors duration-500" 
+            />
+          </div>
+          
+          <h3 class="text-xl font-bold text-dark mb-3">
+            {service.title}
+          </h3>
+          
+          <p class="text-dark/70 leading-relaxed">
+            {service.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

@@ -19,4 +19,10 @@ export const SITE_CONFIG = {
     facebook: 'https://facebook.com/client',
     instagram: 'https://instagram.com/client',
   },
+
+  seo: {
+    title: 'Plombier Chauffagiste à Châteaubourg | Dépannage 7j/7', // Pour le H1
+    description:
+      'Intervention rapide pour fuites, débouchage et installation de chaudières. Devis gratuit et garantie décennale.',
+  },
 };
