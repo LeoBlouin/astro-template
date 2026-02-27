@@ -1,0 +1,34 @@
+---
+import { Icon } from 'astro-icon/components';
+import { ABOUT } from '../data/about';
+---
+
+<section class="py-24 bg-light/50">
+	<div class="container grid md:grid-cols-2 gap-16 items-center">
+		<div>
+			<h2 class="text-3xl md:text-4xl font-bold text-dark mb-6">
+				{ABOUT.title_1}<span class="text-primary">{ABOUT.title_2}</span>
+			</h2>
+			<p class="text-lg text-dark/70 mb-8 leading-relaxed">
+				{ABOUT.subtitle}
+			</p>
+			<a href="#contact" class="btn-primary">{ABOUT.moreInfo}</a>
+		</div>
+
+		<div class="grid gap-6">
+			{
+				ABOUT.engagements.map(engagement => (
+					<div class="flex gap-4 p-6 bg-white rounded-2xl shadow-sm border border-dark/5">
+						<div class="shrink-0">
+							<Icon name={engagement.icon} class="w-6 h-6 text-primary" />
+						</div>
+						<div>
+							<h3 class="font-bold text-dark">{engagement.title}</h3>
+							<p class="text-sm text-dark/60">{engagement.desc}</p>
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>

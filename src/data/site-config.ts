@@ -6,7 +6,7 @@ export const SITE_CONFIG = {
   url: 'https://www.monsite-client.fr', // Important pour les balises OG et Sitemap
   image: '/default-og-image.png', // Image par défaut dans public/
 
-  // Coordonnées pour le futur Footer et la page Contact
+  // Coordonnées pour le Footer et la page Contact
   contact: {
     email: 'contact@client.fr',
     phone: '01 23 45 67 89',
@@ -20,9 +20,15 @@ export const SITE_CONFIG = {
     instagram: 'https://instagram.com/client',
   },
 
+  // HERO
   seo: {
-    title: 'Plombier Chauffagiste à Châteaubourg | Dépannage 7j/7', // Pour le H1
+    title: 'Plombier Chauffagiste à Châteaubourg | Dépannage 7j/7',
     description:
       'Intervention rapide pour fuites, débouchage et installation de chaudières. Devis gratuit et garantie décennale.',
+    badge: 'Artisan Local Certifié',
+    cta1: 'Demander mon Devis Gratuit',
+    cta2: 'Découvrir nos Services',
+    guarantee1: 'Garantie 10 ans',
+    guarantee2: 'Intervention rapide',
   },
 };
