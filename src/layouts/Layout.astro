@@ -19,6 +19,29 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, SITE_CONFIG.url);
+const displayTitle = title === SITE_CONFIG.siteName ? title : `${title} | ${SITE_CONFIG.siteName}`;
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'ProfessionalService',
+	name: SITE_CONFIG.siteName,
+	description: SITE_CONFIG.description,
+	url: SITE_CONFIG.url,
+	telephone: SITE_CONFIG.contact.phone,
+	address: {
+		'@type': 'PostalAddress',
+		addressLocality: 'Châteaubourg',
+		postalCode: '35220',
+		addressCountry: 'FR',
+	},
+	geo: {
+		'@type': 'GeoCoordinates',
+		latitude: 48.1097,
+		longitude: -1.4036,
+	},
+	image: new URL(image, SITE_CONFIG.url).toString(),
+	areaServed: 'Châteaubourg et ses environs (35)',
+};
 ---
 
 <!doctype html>
@@ -30,44 +53,50 @@ const canonicalURL = new URL(Astro.url.pathname, SITE_CONFIG.url);
 		<link rel="canonical" href={canonicalURL} />
 		<meta name="generator" content={Astro.generator} />
 
-		<title>{title === SITE_CONFIG.siteName ? title : `${title} | ${SITE_CONFIG.siteName}`}</title>
+		<title>{displayTitle}</title>
 		<meta name="description" content={description} />
 
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={Astro.url} />
-		<meta property="og:title" content={title} />
+		<meta property="og:title" content={displayTitle} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={new URL(image, SITE_CONFIG.url)} />
 
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content={Astro.url} />
-		<meta property="twitter:title" content={title} />
+		<meta property="twitter:title" content={displayTitle} />
 		<meta property="twitter:description" content={description} />
 		<meta property="twitter:image" content={new URL(image, SITE_CONFIG.url)} />
+
+		<script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
 		<ClientRouter />
 	</head>
 
 	<body class="bg-white text-dark antialiased min-h-screen flex flex-col">
 		<Header />
-		<main>
+		<main class="grow">
 			<slot />
 		</main>
 		<Footer />
+
+		<script>
+			const setupReveal = () => {
+				const observer = new IntersectionObserver(
+					entries => {
+						entries.forEach(entry => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add('active');
+							}
+						});
+					},
+					{ threshold: 0.1 },
+				);
+				document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+			};
+
+			setupReveal();
+			document.addEventListener('astro:after-swap', setupReveal);
+		</script>
 	</body>
 </html>
-
-<script>
-	const observer = new IntersectionObserver(
-		entries => {
-			entries.forEach(entry => {
-				if (entry.isIntersecting) {
-					entry.target.classList.add('active');
-				}
-			});
-		},
-		{ threshold: 0.1 },
-	);
-
-	document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>

@@ -4,7 +4,7 @@ export const SITE_CONFIG = {
   lang: 'fr',
   author: 'Léo Blouin',
   url: 'https://www.monsite-client.fr', // Important pour les balises OG et Sitemap
-  image: '/default-og-image.png', // Image par défaut dans public/
+  image: '/default-og-image.jpg', // Image par défaut dans public/
 
   // Coordonnées pour le Footer et la page Contact
   contact: {
