@@ -1,0 +1,87 @@
+---
+import { Icon } from 'astro-icon/components';
+import { SITE_CONFIG } from '../data/site-config';
+
+const styles = {
+	label: 'text-sm font-bold uppercase tracking-wider text-dark/50',
+	input:
+		'p-4 bg-light rounded-xl border-none focus:ring-2 focus:ring-primary outline-none transition-shadow',
+};
+---
+
+<section id="contact" class="py-24 bg-white">
+	<div class="container">
+		<div class="bg-dark rounded-[2.5rem] overflow-hidden shadow-2xl">
+			<div class="grid lg:grid-cols-2">
+				<div class="p-8 md:p-16 bg-primary text-white">
+					<h2 class="text-3xl md:text-4xl font-bold mb-8">Discutons de votre projet</h2>
+					<p class="mb-12 text-lg opacity-90">
+						Besoin d'un dépannage urgent ou d'un devis pour vos travaux ? Appelez-nous directement
+						ou remplissez le formulaire.
+					</p>
+
+					<div class="space-y-6">
+						<a
+							href={`tel:${SITE_CONFIG.contact.phone}`}
+							class="flex items-center gap-4 group w-fit">
+							<div
+								class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
+								<Icon name="lucide:phone" class="w-6 h-6" />
+							</div>
+							<span class="text-xl font-semibold">{SITE_CONFIG.contact.phone}</span>
+						</a>
+
+						<div class="flex items-center gap-4">
+							<div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
+								<Icon name="lucide:map-pin" class="w-6 h-6" />
+							</div>
+							<span class="text-xl font-semibold">{SITE_CONFIG.contact.address}</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="p-8 md:p-16 bg-white text-dark">
+					<form class="grid gap-6">
+						<div class="grid md:grid-cols-2 gap-6">
+							<div class="flex flex-col gap-2">
+								<label for="name" class={styles.label}>Nom</label>
+								<input
+									type="text"
+									id="name"
+									class={styles.input}
+									placeholder="Jean Dupont"
+									required
+								/>
+							</div>
+							<div class="flex flex-col gap-2">
+								<label for="email" class={styles.label}>Email</label>
+								<input
+									type="email"
+									id="email"
+									class={styles.input}
+									placeholder="jean@email.com"
+									required
+								/>
+							</div>
+						</div>
+
+						<div class="flex flex-col gap-2">
+							<label for="message" class={styles.label}>Votre projet</label>
+							<textarea
+								id="message"
+								rows="4"
+								class={styles.input}
+								placeholder="Décrivez votre besoin..."></textarea>
+						</div>
+
+						<button
+							type="submit"
+							class="btn-primary w-full py-4 text-lg hover:scale-[1.02] transition-transform">
+							Envoyer la demande
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
