@@ -41,12 +41,13 @@ const styles = {
 				</div>
 
 				<div class="p-8 md:p-16 bg-white text-dark">
-					<form class="grid gap-6">
+					<form action="https://formspree.io/f/mykdvyyv" method="POST" class="grid gap-6">
 						<div class="grid md:grid-cols-2 gap-6">
 							<div class="flex flex-col gap-2">
 								<label for="name" class={styles.label}>Nom</label>
 								<input
 									type="text"
+									name="name"
 									id="name"
 									class={styles.input}
 									placeholder="Jean Dupont"
@@ -57,6 +58,7 @@ const styles = {
 								<label for="email" class={styles.label}>Email</label>
 								<input
 									type="email"
+									name="email"
 									id="email"
 									class={styles.input}
 									placeholder="jean@email.com"
@@ -68,10 +70,12 @@ const styles = {
 						<div class="flex flex-col gap-2">
 							<label for="message" class={styles.label}>Votre projet</label>
 							<textarea
+								name="message"
 								id="message"
 								rows="4"
 								class={styles.input}
-								placeholder="Décrivez votre besoin..."></textarea>
+								placeholder="Décrivez votre besoin..."
+								required></textarea>
 						</div>
 
 						<button
@@ -85,3 +89,25 @@ const styles = {
 		</div>
 	</div>
 </section>
+
+<script>
+	const form = document.querySelector('form');
+
+	form?.addEventListener('submit', async e => {
+		e.preventDefault();
+		const formData = new FormData(form);
+
+		const response = await fetch(form.action, {
+			method: 'POST',
+			body: formData,
+			headers: { Accept: 'application/json' },
+		});
+
+		if (response.ok) {
+			alert('Merci ! Votre message a bien été envoyé. Nous vous rappelons sous 24h.');
+			form.reset();
+		} else {
+			alert('Oups ! Une erreur est survenue. Merci de nous contacter par téléphone.');
+		}
+	});
+</script>
