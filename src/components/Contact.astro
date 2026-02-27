@@ -25,14 +25,15 @@ const styles = {
 							href={`tel:${SITE_CONFIG.contact.phone}`}
 							class="flex items-center gap-4 group w-fit">
 							<div
-								class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
+								class="size-12 shrink-0 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
 								<Icon name="lucide:phone" class="w-6 h-6" />
 							</div>
 							<span class="text-xl font-semibold">{SITE_CONFIG.contact.phone}</span>
 						</a>
 
 						<div class="flex items-center gap-4">
-							<div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
+							<div
+								class="size-12 shrink-0 rounded-full bg-white/10 flex items-center justify-center">
 								<Icon name="lucide:map-pin" class="w-6 h-6" />
 							</div>
 							<span class="text-xl font-semibold">{SITE_CONFIG.contact.address}</span>
