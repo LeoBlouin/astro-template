@@ -1,5 +1,5 @@
 export const SERVICES = {
-  title: 'Nos expertises au service de votre habitat',
+  title: 'Mon expertise au service de votre habitat',
   subtitle:
     "Des solutions durables et une main-d'œuvre qualifiée pour tous vos travaux de plomberie et chauffage.",
   services: [

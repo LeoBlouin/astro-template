@@ -2,8 +2,8 @@ export const ABOUT = {
   title_1: "Plus qu'un simple dépannage, un ",
   title_2: 'accompagnement de confiance',
   subtitle:
-    "Depuis 2021, nous intervenons chez les particuliers et professionnels avec une obsession : la qualité du travail bien fait. Comme dirait Montaigne, nous jugeons l'autre selon ce qu'il est, et nous traitons chaque maison comme la nôtre.",
-  moreInfo: 'En savoir plus sur nous',
+    "Depuis 1999, j'interviens chez les particuliers et professionnels avec une obsession : la qualité du travail bien fait. Comme dirait Montaigne, nous jugeons l'autre selon ce qu'il est, et je traite chaque maison comme la mienne.",
+  moreInfo: 'En savoir plus',
   engagements: [
     {
       title: 'Devis Gratuit',
@@ -12,7 +12,7 @@ export const ABOUT = {
     },
     {
       title: 'Chantier Propre',
-      desc: 'Nous protégeons vos sols et nettoyons après chaque passage.',
+      desc: 'Je protège vos sols et nettoie après chaque passage.',
       icon: 'lucide:sparkles',
     },
     {
